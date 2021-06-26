@@ -1,9 +1,9 @@
-image="";
+img="";
 objects=[];
 status="";
 
 function preload(){
-    image=loadImage("baby.jpg");
+    img=loadImage("baby.jpg");
 }
 
 function setup(){
@@ -15,7 +15,6 @@ function setup(){
 function modelLoaded(){
     console.log('model is loaded');
     status=true;
-    objectDetector.detect(image, gotResult);
 }
 function gotResult(error, results){
     if(error){
@@ -25,19 +24,20 @@ function gotResult(error, results){
     objects=results;
 }
 function draw(){
-    image(image,0,0,400,400);
+    image(img,0,0,400,400);
     if(status != ""){
         r= random(255);
         g= random(255);
         b= random(255);
+        objectDetector.detect(img, gotResult);
         for(i=0;i<objects.length;i++){
         document.getElementById("status").innerHTML="Status: Object Detect";   
         document.getElementById("baby").innerHTML="Baby found";
-        fill("r,g,b");
+        fill(r,g,b);
         percent=floor(objects[i].confidence * 100);
-        text(objects[i].label+ " " +percent + "%",objects[i].x + 10,objects[i].y + 20);
+        text(objects[i].label+ " " +percent + "%",objects[i].x + 20,objects[i].y + 30);
         noFill();
-        stroke("r,g,b");
+        stroke(r,g,b);
         rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
         }
     }
