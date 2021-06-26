@@ -1,0 +1,21 @@
+.button{
+    width: 200px;
+}
+body{
+    text-align: center;
+    background-size: cover;
+}
+.header
+{
+font-size: 23px;
+width: 100%;
+margin: 0px;
+}
+
+#status
+{
+font-size: 22px;
+}
+canvas{
+    margin-top: 50px;
+}
